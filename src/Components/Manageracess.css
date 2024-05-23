@@ -1,0 +1,59 @@
+.container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.header {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.nav {
+    margin-bottom: 20px;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.employee-container {
+    margin-bottom: 20px;
+}
+
+.employee-info {
+    margin-bottom: 10px;
+}
+
+.employee-info label {
+    font-weight: bold;
+}
+
+.employee-info input {
+    margin-right: 10px;
+}
+
+.employee-salary {
+    margin-bottom: 10px;
+}
+
+.employee-actions {
+    margin-top: 10px;
+}
+
+.button {
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
