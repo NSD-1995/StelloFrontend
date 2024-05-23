@@ -92,8 +92,7 @@ function ManagerAccess(props) {
                         </div>
                         <br></br>
                         <br></br>
-                        <div>TotalSalary:{listReporter.reduce((acc,cur)=>
-                                cur=acc + cur.empSalary,
+                        <div>TotalSalary:{listReporter.reduce((acc,cur)=>acc + Number(cur.empSalary),
                         0)
                         }</div>
                     </div>
