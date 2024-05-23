@@ -6,7 +6,7 @@ import './Manageracess.css'
 
 function ManagerAccess(props) {
     const [listReporter, setReporter] = useState([]);
-    const [error, setError] = useState(null); 
+    const [error, setError] = useState(null);
     const token = Cookies.get('auth');
     const [edit, setEdit] = useState(null);
     const [updateSalary, setUpdateSalary] = useState('');
@@ -17,12 +17,13 @@ function ManagerAccess(props) {
                 'Authorization': `Bearer ${token}`
             }
         })
-        .then(response => {
-            setReporter(response.data.EmployeeData);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+            .then(response => {
+                console.log(response.data.EmployeeData)
+                setReporter(response.data.EmployeeData);
+            })
+            .catch(error => {
+                console.error(error);
+            });
     }, [token]);
 
     const updateEmployee = (id) => {
@@ -33,17 +34,17 @@ function ManagerAccess(props) {
                 'Authorization': `Bearer ${token}`
             }
         })
-        .then(response => {
-            setReporter(prevState =>
-                prevState.map(item =>
-                    item._id === id ? { ...item, empSalary: updateSalary } : item
-                )
-            );
-            setEdit(null);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+            .then(response => {
+                setReporter(prevState =>
+                    prevState.map(item =>
+                        item._id === id ? { ...item, empSalary: updateSalary } : item
+                    )
+                );
+                setEdit(null);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     };
 
     function HandleLogout() {
@@ -57,7 +58,7 @@ function ManagerAccess(props) {
                 <Link to="/" onClick={HandleLogout} className="button">Logout</Link>
             </nav>
             {error ? (
-                <p className="error">{error}</p> 
+                <p className="error">{error}</p>
             ) : (
                 listReporter.map((item) => (
                     <div className="employee-container" key={item._id}>
@@ -89,6 +90,12 @@ function ManagerAccess(props) {
                                 {edit === item._id ? 'Save' : 'Update'}
                             </button>
                         </div>
+                        <br></br>
+                        <br></br>
+                        <div>TotalSalary:{listReporter.reduce((acc,cur)=>
+                                cur=acc + cur.empSalary,
+                        0)
+                        }</div>
                     </div>
                 ))
             )}
